@@ -5,7 +5,7 @@ import {Script} from "forge-std/Script.sol";
 import {console} from "forge-std/Console.sol";
 import {FeesData} from "socket-protocol/contracts/common/Structs.sol";
 import {ETH_ADDRESS} from "socket-protocol/contracts/common/Constants.sol";
-import {WalletDeployer} from "../contracts/SmartWalletDeployer.sol";
+import {WalletDeployer} from "../src/SmartWalletDeployer.sol";
 contract SetupWallet is Script {
     function run() public {
         address addressResolver = vm.envAddress("ADDRESS_RESOLVER");

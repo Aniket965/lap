@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
-import {WalletDeployer} from "../contracts/SmartWalletDeployer.sol";
+import {WalletDeployer} from "../src/SmartWalletDeployer.sol";
 
 contract DeploySmartWallet is Script {
     function run() public {
@@ -12,11 +12,11 @@ contract DeploySmartWallet is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        WalletDeployer myWalletDeployer = WalletDeployer(0x803953FF16FC3944e1799B58bd62638382890b4C);
+        WalletDeployer myWalletDeployer = WalletDeployer(0xd7B1C1C9E52828aceEeeAB2B7e4d9a670967cD2B);
 
-        // bytes32 walletId = keccak256(abi.encode("wallet", 0x7554d18FBfebcd4bFF4Df97479262715a2203C8a));
-        myWalletDeployer.deployContracts(84532);
-        // myWalletDeployer.deployContracts(11155420, walletId);
-        // myWalletDeployer.deployContracts(421614, walletId);
+        bytes32 walletId = keccak256(abi.encode("wallet", 0x7554d18FBfebcd4bFF4Df97479262715a2203C8a));
+        myWalletDeployer.deployContracts(84532, walletId);
+        myWalletDeployer.deployContracts(11155420, walletId);
+        myWalletDeployer.deployContracts(421614, walletId);
     }
 }
