@@ -9,7 +9,6 @@ contract LapSolverGatway is AppGatewayBase {
 	}
 
     function solveAuction(AuctionedLiquidity memory auctioned) external  {
-        
        /// do some magic get some extra tokens
        ILiquidityAuctionProtocol(forwarder).useLiquidity(auctioned);
        // do some magic again whatever you want
