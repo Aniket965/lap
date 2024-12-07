@@ -14,7 +14,7 @@ contract DeploySmartWallet is Script {
 
         WalletDeployer myWalletDeployer = WalletDeployer(0xd7B1C1C9E52828aceEeeAB2B7e4d9a670967cD2B);
 
-        bytes32 walletId = keccak256(abi.encode("wallet", 0x7554d18FBfebcd4bFF4Df97479262715a2203C8a));
+        bytes32 walletId = keccak256(abi.encode("wallet", 0x75BA0717825Cf178bC49f84dd1D9F33298dFCCBf));
         myWalletDeployer.deployContracts(84532, walletId);
         myWalletDeployer.deployContracts(11155420, walletId);
         myWalletDeployer.deployContracts(421614, walletId);

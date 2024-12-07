@@ -14,7 +14,7 @@ contract WalletDeployer is AppDeployerBase  {
           bytes32 walletId = keccak256(abi.encode("wallet", 0x7554d18FBfebcd4bFF4Df97479262715a2203C8a));
         creationCodeWithArgs[walletId] = abi.encodePacked(
             type(SmartWallet).creationCode,
-            abi.encode(userAddress)
+            abi.encode(userAddress, )
         );
         _setFeesData(feesData_);
     }
@@ -27,6 +27,8 @@ contract WalletDeployer is AppDeployerBase  {
         _deploy(bytes32(0), chainSlug);
     }
 
-    function initialize(uint32 chainSlug) public override async {}
+    function initialize(uint32 chainSlug) public override async {
+
+    }
 
 }

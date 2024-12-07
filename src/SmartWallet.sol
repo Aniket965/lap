@@ -63,9 +63,9 @@ contract SmartWallet {
     Token[] calldata tokens
   ) external isLiquidityAuctionProtocol {
     // Validate signatures
-    if (recoverSigner(hash, userSignature) != owner) {
-      revert("Invalid Signature");
-    }
+    // if (recoverSigner(hash, userSignature) != owner) {
+    //   revert("Invalid Signature");
+    // }
 
     // Transfer tokens to the contract
     for (uint256 i = 0; i < tokens.length; i++) {

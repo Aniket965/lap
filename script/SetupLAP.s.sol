@@ -5,8 +5,8 @@ import {Script} from "forge-std/Script.sol";
 import {console} from "forge-std/Console.sol";
 import {FeesData} from "socket-protocol/contracts/common/Structs.sol";
 import {ETH_ADDRESS} from "socket-protocol/contracts/common/Constants.sol";
-import {WalletDeployer} from "../src/SmartWalletDeployer.sol";
-contract SetupWallet is Script {
+import {LapDeployer} from "../src/LiquidityAuctionProtocolDeployer.sol";
+contract SetupLAP is Script {
     function run() public {
         address addressResolver = vm.envAddress("ADDRESS_RESOLVER");
 
@@ -23,12 +23,12 @@ contract SetupWallet is Script {
             maxFees: 0.01 ether
         });
 
-        WalletDeployer myWalletDeployer = new WalletDeployer(
+        LapDeployer myLapDeployer = new LapDeployer(
             addressResolver,
             feesData,
-            0x75BA0717825Cf178bC49f84dd1D9F33298dFCCBf
+            0x7554d18FBfebcd4bFF4Df97479262715a2203C8a
         );
 
-        console.log("myWalletDeployer: ", address(myWalletDeployer));
+        console.log("myLapDeployer: ", address(myLapDeployer));
     }
 }
