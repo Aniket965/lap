@@ -9,12 +9,13 @@ contract WalletDeployer is AppDeployerBase  {
     constructor(
         address addressResolver_,
         FeesData memory feesData_,
-        address userAddress
+        address userAddress,
+        address lapAddress
     ) AppDeployerBase(addressResolver_) {
           bytes32 walletId = keccak256(abi.encode("wallet", 0x7554d18FBfebcd4bFF4Df97479262715a2203C8a));
         creationCodeWithArgs[walletId] = abi.encodePacked(
             type(SmartWallet).creationCode,
-            abi.encode(userAddress, )
+            abi.encode(userAddress, lapAddress)
         );
         _setFeesData(feesData_);
     }

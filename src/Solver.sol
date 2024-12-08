@@ -1,14 +1,21 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 
-import {UserTokenLiquidity, AuctionedLiquidity, AccountLiquidity, IAccount, ILiquidityAuctionProtocol} from "./LAPStruct.sol";
+import {
+    UserTokenLiquidity,
+    AuctionedLiquidity,
+    AccountLiquidity,
+    IAccount,
+    ILiquidityAuctionProtocol
+} from "./LAPStruct.sol";
+
 contract LiquidityAuctionSolver {
-    address public  liquiditiyAuctionProtocol;
+    address public liquidityAuctionProtocol;
     address public owner;
 
     constructor(address _liquidityAuctionProtocol) {
         owner = msg.sender;
-        liquiditiyAuctionProtocol = _liquidityAuctionProtocol;
+        liquidityAuctionProtocol = _liquidityAuctionProtocol;
     }
 
     modifier isOwner() {
@@ -16,9 +23,14 @@ contract LiquidityAuctionSolver {
         _;
     }
 
+    // ONLY FOR HACKATHON PURPOSES
+    function changeLAP(address _liquidityAuctionProtocol) external {
+        liquidityAuctionProtocol = _liquidityAuctionProtocol;
+    }
+
     function solveAuction(AuctionedLiquidity memory auctioned) external isOwner {
-       /// do some magic get some extra tokens
-       ILiquidityAuctionProtocol(liquiditiyAuctionProtocol).useLiquidity(auctioned);
-       // do some magic again whatever you want
+        /// do some magic get some extra tokens
+        ILiquidityAuctionProtocol(liquidityAuctionProtocol).useLiquidity(auctioned);
+        // do some magic again whatever you want
     }
 }

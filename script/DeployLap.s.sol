@@ -12,7 +12,7 @@ contract DeploySmartWallet is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        LapDeployer myLapDeployer = LapDeployer(0x304d66307D5839e92C9C1E3Dc814F019A60dEF09);
+        LapDeployer myLapDeployer = LapDeployer(0x15A66a5f6F212D5FdcF4834fb89b116ac7e30B11);
         
         myLapDeployer.deployContracts(84532);
         myLapDeployer.deployContracts(11155420);

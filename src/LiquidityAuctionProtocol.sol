@@ -48,6 +48,7 @@ contract LiquidityAuctionProtocol {
             AccountLiquidity calldata account = auction.accounts[i];
             _transferTokensFromAccounts(account);
         }
+        ERC20(auction.liquidityToken).approve(auction.defiProtocol, auction.liquidityAmount);
         IDefiProtocol(auction.defiProtocol).utilizeLiquidity(auction.liquidityToken, auction.liquidityAmount);
         for (uint256 i = 0; i < auction.accounts.length; i++) {
             AccountLiquidity calldata account = auction.accounts[i];

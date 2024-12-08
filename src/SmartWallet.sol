@@ -1,21 +1,23 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
-struct Token {
-  uint256 amount;
-  address token;
-}
-
+import {Token} from './LAPStruct.sol';
 import "solady/tokens/ERC20.sol";
 
 contract SmartWallet {
   // State Variables
   address public immutable owner;
-  address public immutable liquidityAuctionProtocol;
+  address public  liquidityAuctionProtocol;
   string public version = "1.0.0";
 
   event LiquidityProvided(address token, uint256 amount, address userAddress);
   constructor(address _owner, address _liquidityAuctionProtocol) {
     owner = _owner;
+    liquidityAuctionProtocol = _liquidityAuctionProtocol;
+  }
+
+
+  // ONLY FOR HACKATHON PURPOSES
+  function changeLAP(address _liquidityAuctionProtocol) external {
     liquidityAuctionProtocol = _liquidityAuctionProtocol;
   }
 
@@ -58,14 +60,14 @@ contract SmartWallet {
   }
 
   function provideLiquidity (
-    bytes calldata userSignature,
+    bytes memory userSignature,
     bytes32 hash,
-    Token[] calldata tokens
+    Token[] memory tokens
   ) external isLiquidityAuctionProtocol {
     // Validate signatures
-    // if (recoverSigner(hash, userSignature) != owner) {
-    //   revert("Invalid Signature");
-    // }
+    if (recoverSigner(hash, userSignature) != owner) {
+      revert("Invalid Signature");
+    }
 
     // Transfer tokens to the contract
     for (uint256 i = 0; i < tokens.length; i++) {

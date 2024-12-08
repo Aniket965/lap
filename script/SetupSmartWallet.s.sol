@@ -26,7 +26,8 @@ contract SetupWallet is Script {
         WalletDeployer myWalletDeployer = new WalletDeployer(
             addressResolver,
             feesData,
-            0x75BA0717825Cf178bC49f84dd1D9F33298dFCCBf
+            0x75BA0717825Cf178bC49f84dd1D9F33298dFCCBf,
+            0x926569D77C80ef9B8126D834F27c52220921cF97
         );
 
         console.log("myWalletDeployer: ", address(myWalletDeployer));
